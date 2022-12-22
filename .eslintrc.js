@@ -12,9 +12,10 @@ module.exports = {
   },
   plugins: ["react"],
   rules: {
-    indent: ["error", 2],
-    "linebreak-style": ["error", "unix"],
-    quotes: ["error", "double"],
-    semi: ["error", "always"],
+    indent: ["warn", 2],
+    "linebreak-style": ["warn", "unix"],
+    quotes: ["warn", "double"],
+    semi: ["warn", "always"],
+    "prettier/prettier": "warn",
   },
 };
