@@ -10,12 +10,13 @@ const Card = (props) => {
   return (
     <div
       className={cx(
-        className,
-        "border-box rounded-xl shadow-lg bg-gradient-to-r from-violet-50 to-violet-100 flex flex-col items-center justify-center"
+        "border-box rounded-xl shadow-lg bg-gradient-to-r from-violet-50 to-violet-100",
+        "flex flex-col items-center justify-center flex-wrap",
+        className
       )}
       onClick={onCardClick}
     >
-      <h1 className="text-md md:lg lg:text-xl font-bold text-center">
+      <h1 className="text-sm md:text-md lg:text-xl font-bold text-center">
         <LikeCode text={heading} />
       </h1>
     </div>
