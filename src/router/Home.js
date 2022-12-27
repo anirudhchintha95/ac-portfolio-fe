@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import cx from "classnames";
 
-import { Welcome, Resume } from "../components/Home";
+import { Welcome, Resume, Header, Footer } from "../components/Home";
 
 const Home = () => {
   const [initialBtnClicked, setInitialBtnClicked] = useState(false);
@@ -30,7 +30,7 @@ const Home = () => {
   return (
     <div className="h-screen w-4/5 mx-auto">
       <div className="h-screen w-full flex flex-col items-center">
-        <div className="h-12 flex items-center justify-center">Header</div>
+        <Header />
         <div className="flex w-full flex-col flex-1">
           <div
             className={cx(
@@ -44,7 +44,7 @@ const Home = () => {
           />
           {showCards ? <Resume showCards={showCards} /> : <></>}
         </div>
-        <div className="h-12 flex items-center justify-center">Footer</div>
+        <Footer />
       </div>
     </div>
   );

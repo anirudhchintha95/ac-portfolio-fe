@@ -15,7 +15,8 @@ const SubHeadingContent = (props) => {
     <div
       className={cx(
         "flex-1 w-full relative bg-gradient-to-l from-violet-50 to-violet-100 rounded-lg",
-        "flex flex-col"
+        "flex flex-col",
+        "animate-fadeIn opacity-100"
       )}
     >
       <div className="h-12 flex items-center justify-center">
