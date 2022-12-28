@@ -1,13 +1,13 @@
 import React from "react";
-import { EductionData } from "../../constants";
+import { EducationData } from "../../constants";
 
 const Education = () => {
   return (
     <div className="grid grid-rows-2 overflow-auto">
-      {EductionData.map((data) => (
+      {EducationData.map((data) => (
         <div
           key={data.key}
-          className="flex box-border p-4 border rounded-md shadow-md bg-slate-50 my-4 flex-col md:flex-row items-center text-sm md:text-md"
+          className="flex box-border p-4 border rounded-md shadow-md bg-slate-50 my-4 items-center text-sm md:text-md"
         >
           <img src={data.logo} className="h-20 w-20" />
           <div className="flex-1 pl-4 flex flex-col md:justify-center">

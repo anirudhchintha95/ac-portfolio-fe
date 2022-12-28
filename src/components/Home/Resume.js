@@ -15,8 +15,12 @@ const Resume = (props) => {
 
   const [selectedSubHeading, setSelectedSubHeading] = useState();
   const [showInModal, setShowInModal] = useState(false);
+  const [currentItem, setCurrentItem] = useState();
 
-  const onSelectedSubHeadingChange = (newValue) => setSelectedSubHeading(newValue);
+  const onSelectedSubHeadingChange = (newValue) => {
+    setSelectedSubHeading(newValue);
+    setCurrentItem();
+  };
   const onChangeOpenModal = () => setShowInModal((val) => !val);
   const onCloseContent = () => onSelectedSubHeadingChange(null);
 
@@ -50,6 +54,8 @@ const Resume = (props) => {
           <Modal onModalClose={onCloseContent}>
             <SubHeadingContent
               inModal
+              currentItem={currentItem}
+              setCurrentItem={setCurrentItem}
               showChangeModal={width >= 550}
               selectedSubHeading={selectedSubHeading}
               closeContent={onCloseContent}
@@ -59,6 +65,8 @@ const Resume = (props) => {
         ) : (
           <SubHeadingContent
             showChangeModal
+            currentItem={currentItem}
+            setCurrentItem={setCurrentItem}
             selectedSubHeading={selectedSubHeading}
             closeContent={onCloseContent}
             onChangeOpenModal={onChangeOpenModal}
