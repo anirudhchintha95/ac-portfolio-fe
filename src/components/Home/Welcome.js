@@ -15,7 +15,7 @@ const Welcome = (props) => {
         initialBtnClicked ? "w-full" : "w-auto"
       )}
     >
-      <div className="transition-all duration-1000 ease-in-out rounded-md drop-shadow-lg border py-8 md:py-16 px-8 md:px-12 bg-gradient-to-r from-violet-50 to-violet-100 flex flex-col items-center justify-center w-full">
+      <div className="transition-all duration-1000 ease-in-out rounded-md drop-shadow-lg border py-8 md:py-16 px-8 md:px-12 bg-gradient-to-r from-violet-50 to-violet-100 flex flex-col items-center justify-center w-full border-gray-300">
         <h1 className="text-xl md:text-3xl lg:text-4xl font-bold pb-8 text-center">
           Hi! This is Anirudh Chintha
         </h1>

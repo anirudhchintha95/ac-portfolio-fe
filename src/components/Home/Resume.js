@@ -14,8 +14,10 @@ const Resume = (props) => {
   const { width } = useWindowDimensions();
 
   const [selectedSubHeading, setSelectedSubHeading] = useState();
+  const [showInModal, setShowInModal] = useState(false);
 
   const onSelectedSubHeadingChange = (newValue) => setSelectedSubHeading(newValue);
+  const onChangeOpenModal = () => setShowInModal((val) => !val);
   const onCloseContent = () => onSelectedSubHeadingChange(null);
 
   useEffect(() => {
@@ -39,21 +41,27 @@ const Resume = (props) => {
             className="h-24 cursor-pointer hover:scale-105 transition-all ease-linear duration-250"
             heading={subHeading}
             onCardClick={() => onSelectedSubHeadingChange(subHeading)}
+            selected={selectedSubHeading === subHeading}
           />
         ))}
       </div>
       {selectedSubHeading ? (
-        width < 550 ? (
+        width < 550 || showInModal ? (
           <Modal onModalClose={onCloseContent}>
             <SubHeadingContent
+              inModal
+              showChangeModal={width >= 550}
               selectedSubHeading={selectedSubHeading}
               closeContent={onCloseContent}
+              onChangeOpenModal={onChangeOpenModal}
             />
           </Modal>
         ) : (
           <SubHeadingContent
+            showChangeModal
             selectedSubHeading={selectedSubHeading}
             closeContent={onCloseContent}
+            onChangeOpenModal={onChangeOpenModal}
           />
         )
       ) : (

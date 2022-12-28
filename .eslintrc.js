@@ -12,7 +12,7 @@ module.exports = {
   },
   plugins: ["react"],
   rules: {
-    indent: ["warn", 2],
+    indent: ["warn", 2, { SwitchCase: 1 }],
     "linebreak-style": ["warn", "unix"],
     quotes: ["warn", "double"],
     semi: ["warn", "always"],

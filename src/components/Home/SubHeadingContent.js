@@ -1,41 +1,54 @@
 import React from "react";
 import PropTypes from "prop-types";
-import cx from "classnames";
-import { RxCross1 } from "react-icons/rx";
 
 import { subHeadingsMapper } from "../../constants";
 
-import { LikeCode } from "../common";
+import { Folder } from "../common";
 import Education from "./Education";
+import AcademicProjects from "./AcademicProjects";
+import WorkExperience from "./WorkExperience";
+
+const ContentMapper = (props) => {
+  switch (props.selectedSubHeading) {
+    case subHeadingsMapper.education:
+      return <Education />;
+    case subHeadingsMapper.academicProjects:
+      return <AcademicProjects />;
+    case subHeadingsMapper.workExperience:
+      return <WorkExperience />;
+    default:
+      return <></>;
+  }
+};
+
+ContentMapper.propTypes = {
+  selectedSubHeading: PropTypes.string,
+};
 
 const SubHeadingContent = (props) => {
-  const { selectedSubHeading, closeContent } = props;
+  const { selectedSubHeading, showChangeModal, inModal, closeContent, onChangeOpenModal } = props;
 
   return (
-    <div
-      className={cx(
-        "flex-1 w-full relative bg-gradient-to-l from-violet-50 to-violet-100 rounded-lg",
-        "flex flex-col",
-        "animate-fadeIn opacity-100"
-      )}
+    <Folder
+      heading={selectedSubHeading}
+      showMaxMinButton={showChangeModal}
+      folderMaxed={inModal}
+      onMaxMinFolder={onChangeOpenModal}
+      onCloseFolder={closeContent}
+      showBackButton
+      onBackButtonClick
     >
-      <div className="h-12 flex items-center justify-center">
-        <div className="text-md md:lg lg:text-xl font-bold text-center">
-          <LikeCode text={selectedSubHeading} />
-        </div>
-        <RxCross1 className="absolute top-4 right-4 cursor-pointer" onClick={closeContent} />
-      </div>
-
-      <div className="flex-1 px-8">
-        {selectedSubHeading === subHeadingsMapper.education ? <Education /> : <></>}
-      </div>
-    </div>
+      <ContentMapper selectedSubHeading={selectedSubHeading} />
+    </Folder>
   );
 };
 
 SubHeadingContent.propTypes = {
   selectedSubHeading: PropTypes.string,
   closeContent: PropTypes.func.isRequired,
+  showChangeModal: PropTypes.bool,
+  inModal: PropTypes.bool,
+  onChangeOpenModal: PropTypes.func.isRequired,
 };
 
 export default SubHeadingContent;
