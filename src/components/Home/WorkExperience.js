@@ -12,7 +12,7 @@ const WorkExperience = (props) => {
 
   return currentItem ? (
     <div className="flex flex-col box-border p-4 border rounded-md shadow-md bg-slate-50 my-4 items-center text-sm md:text-md w-full">
-      <div className="p-4 flex flex-col md:justify-center border-b w-full">
+      <div className="pl-4 pb-4 flex flex-col md:justify-center border-b w-full">
         <p className="font-bold text-md md:text-lg">{currentItem.title}</p>
         <p>{currentItem.company}</p>
         <p>{currentItem.location}</p>
