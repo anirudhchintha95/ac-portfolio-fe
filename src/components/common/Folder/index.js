@@ -49,11 +49,11 @@ const Folder = (props) => {
           ) : (
             <></>
           )}
-          <FolderActionButton onClick={onCloseFolder} Icon={RxCross1} />
+          {onCloseFolder ? <FolderActionButton onClick={onCloseFolder} Icon={RxCross1} /> : <></>}
         </div>
       </div>
 
-      <div className="flex-1 px-8">{children}</div>
+      <div className="flex-1 px-8 overflow-y-scroll">{children}</div>
     </div>
   );
 };

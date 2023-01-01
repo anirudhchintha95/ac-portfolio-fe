@@ -7,21 +7,23 @@ import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 import { Card, Modal } from "../common";
 import SubHeadingContent from "./SubHeadingContent";
+import MyDescription from "./MyDescription";
 
 const Resume = (props) => {
   const { showCards } = props;
 
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   const [selectedSubHeading, setSelectedSubHeading] = useState();
   const [showInModal, setShowInModal] = useState(false);
-  const [currentItem, setCurrentItem] = useState();
+  const [showDescModal, setShowDescModal] = useState(false);
 
   const onSelectedSubHeadingChange = (newValue) => {
     setSelectedSubHeading(newValue);
-    setCurrentItem();
+    setShowInModal(false);
   };
   const onChangeOpenModal = () => setShowInModal((val) => !val);
+  const onChangeShowDescModal = () => setShowDescModal((val) => !val);
   const onCloseContent = () => onSelectedSubHeadingChange(null);
 
   useEffect(() => {
@@ -31,7 +33,9 @@ const Resume = (props) => {
   }, [showCards]);
 
   return (
-    <div className="h-full flex flex-col">
+    <div
+      className={cx("h-full flex flex-col", showCards ? "animate-fadeIn opacity-100" : "opacity-0")}
+    >
       <div
         className={cx(
           "grid gap-4 grid-cols-3 grid-rows-2",
@@ -51,11 +55,9 @@ const Resume = (props) => {
       </div>
       {selectedSubHeading ? (
         width < 550 || showInModal ? (
-          <Modal onModalClose={onCloseContent}>
+          <Modal isOpen={width < 550 || showInModal} onModalClose={onCloseContent}>
             <SubHeadingContent
               inModal
-              currentItem={currentItem}
-              setCurrentItem={setCurrentItem}
               showChangeModal={width >= 550}
               selectedSubHeading={selectedSubHeading}
               closeContent={onCloseContent}
@@ -65,15 +67,34 @@ const Resume = (props) => {
         ) : (
           <SubHeadingContent
             showChangeModal
-            currentItem={currentItem}
-            setCurrentItem={setCurrentItem}
             selectedSubHeading={selectedSubHeading}
             closeContent={onCloseContent}
             onChangeOpenModal={onChangeOpenModal}
           />
         )
+      ) : showDescModal || width < 550 || height < 800 ? (
+        <>
+          <Card
+            className="cursor-pointer hover:scale-105 transition-all ease-linear duration-250 p-4"
+            heading="I am a full stack developer with more than 5 years of experience. Click here to know more"
+            onCardClick={onChangeShowDescModal}
+          />
+          <Modal isOpen={showDescModal} onModalClose={onChangeShowDescModal}>
+            <MyDescription
+              showMaxMinButton={!(width < 550 || height < 800)}
+              showDescModal={showDescModal}
+              onChangeOpenModal={onChangeShowDescModal}
+              onCloseFolder={width < 550 || height < 800 ? onChangeShowDescModal : undefined}
+              close
+            />
+          </Modal>
+        </>
       ) : (
-        <></>
+        <MyDescription
+          showMaxMinButton
+          showDescModal={showDescModal}
+          onChangeOpenModal={onChangeShowDescModal}
+        />
       )}
     </div>
   );

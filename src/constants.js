@@ -6,7 +6,7 @@ export const subHeadingsMapper = {
   workExperience: "Work Experience",
   skills: "Skills",
   achievements: "Achievements",
-  aboutMe: "About Me",
+  contactMe: "Contact Me",
 };
 
 export const subHeadings = [
@@ -15,7 +15,7 @@ export const subHeadings = [
   subHeadingsMapper.workExperience,
   subHeadingsMapper.skills,
   subHeadingsMapper.achievements,
-  subHeadingsMapper.aboutMe,
+  subHeadingsMapper.contactMe,
 ];
 
 export const EducationData = [
@@ -25,6 +25,8 @@ export const EducationData = [
     degree: "Master of Science",
     branch: "Computer Science",
     logo: stevensLogo,
+    gpa: 4,
+    maxGpa: 4,
     graduationDate: "May 2024",
     graduated: false,
   },

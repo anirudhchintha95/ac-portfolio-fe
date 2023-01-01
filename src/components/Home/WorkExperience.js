@@ -1,53 +1,39 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { IoIosArrowForward } from "react-icons/io";
+import React, { useState } from "react";
 import { WorkExperienceData } from "../../constants";
+import { Accordian } from "../common";
 
-const WorkExperience = (props) => {
-  const { currentItem, setCurrentItem } = props;
+const WorkExperience = () => {
+  const [currentItem, setCurrentItem] = useState();
 
-  const onChangeCurrentExperience = (data) => {
-    setCurrentItem(data);
+  const onItemClick = (item) => {
+    setCurrentItem((val) => (!val ? item : val.key === item.key ? null : item));
   };
 
-  return currentItem ? (
-    <div className="flex flex-col box-border p-4 border rounded-md shadow-md bg-slate-50 my-4 items-center text-sm md:text-md w-full">
-      <div className="pl-4 pb-4 flex flex-col md:justify-center border-b w-full">
-        <p className="font-bold text-md md:text-lg">{currentItem.title}</p>
-        <p>{currentItem.company}</p>
-        <p>{currentItem.location}</p>
-      </div>
-      <div className="p-4">
-        <ul className="list-disc inline-block">
-          {currentItem.description.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  ) : (
-    <div className="grid grid-rows-2 overflow-auto">
+  return (
+    <div className="flex flex-col">
       {WorkExperienceData.map((data) => (
-        <div
+        <Accordian
           key={data.key}
-          className="flex box-border p-4 border rounded-md shadow-md bg-slate-50 my-4 items-center text-sm md:text-md justify-between cursor-pointer"
-          onClick={() => onChangeCurrentExperience(data)}
+          onClick={() => onItemClick(data)}
+          id={`work-experience-${data.key}`}
+          isOpen={currentItem?.key === data.key}
         >
-          <div className="flex-1 pl-4 flex flex-col md:justify-center">
+          {/* Accordian Summary */}
+          <div>
             <p className="font-bold text-md md:text-lg">{data.title}</p>
             <p>{data.company}</p>
             <p>{data.location}</p>
           </div>
-          <IoIosArrowForward />
-        </div>
+          {/* Accordian Content */}
+          <ul className="list-disc inline-block">
+            {data.description.map((item, index) => (
+              <li key={index}>{item}</li>
+            ))}
+          </ul>
+        </Accordian>
       ))}
     </div>
   );
-};
-
-WorkExperience.propTypes = {
-  currentItem: PropTypes.any,
-  setCurrentItem: PropTypes.func.isRequired,
 };
 
 export default WorkExperience;

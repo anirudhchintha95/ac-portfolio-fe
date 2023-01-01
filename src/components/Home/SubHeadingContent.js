@@ -15,7 +15,7 @@ const ContentMapper = (props) => {
     case subHeadingsMapper.academicProjects:
       return <AcademicProjects />;
     case subHeadingsMapper.workExperience:
-      return <WorkExperience {...props} />;
+      return <WorkExperience />;
     default:
       return <></>;
   }
@@ -23,20 +23,10 @@ const ContentMapper = (props) => {
 
 ContentMapper.propTypes = {
   selectedSubHeading: PropTypes.string,
-  currentItem: PropTypes.any,
-  setCurrentItem: PropTypes.func.isRequired,
 };
 
 const SubHeadingContent = (props) => {
-  const {
-    selectedSubHeading,
-    showChangeModal,
-    inModal,
-    closeContent,
-    onChangeOpenModal,
-    currentItem,
-    setCurrentItem,
-  } = props;
+  const { selectedSubHeading, showChangeModal, inModal, closeContent, onChangeOpenModal } = props;
 
   return (
     <Folder
@@ -45,14 +35,8 @@ const SubHeadingContent = (props) => {
       folderMaxed={inModal}
       onMaxMinFolder={onChangeOpenModal}
       onCloseFolder={closeContent}
-      showBackButton={!!currentItem}
-      onBackButtonClick={() => setCurrentItem()}
     >
-      <ContentMapper
-        selectedSubHeading={selectedSubHeading}
-        currentItem={currentItem}
-        setCurrentItem={setCurrentItem}
-      />
+      <ContentMapper selectedSubHeading={selectedSubHeading} />
     </Folder>
   );
 };
@@ -63,8 +47,6 @@ SubHeadingContent.propTypes = {
   showChangeModal: PropTypes.bool,
   inModal: PropTypes.bool,
   onChangeOpenModal: PropTypes.func.isRequired,
-  currentItem: PropTypes.any,
-  setCurrentItem: PropTypes.func.isRequired,
 };
 
 export default SubHeadingContent;

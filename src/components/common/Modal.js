@@ -2,7 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Modal = (props) => {
-  const { onModalClose, children } = props;
+  const { isOpen, onModalClose, children } = props;
+  if (!isOpen) {
+    return <></>;
+  }
+
   return (
     <div
       className="fixed h-screen w-screen top-0 left-0 flex justify-center items-center backdrop-blur-md"
@@ -19,6 +23,7 @@ const Modal = (props) => {
 };
 
 Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
   onModalClose: PropTypes.func.isRequired,
   children: PropTypes.any.isRequired,
 };
