@@ -1,12 +1,13 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 
 import { FireEmoji, ThumbsUpEmpji } from "../../assets/gifs";
-import { LikeCode } from "../common";
+import { Button, LikeCode } from "../common";
 
 const Welcome = (props) => {
-  const { initialBtnClicked, onInitialButtonClick } = props;
+  const { initialBtnClicked, onInitialButtonClick, showCards } = props;
 
   return (
     <div
@@ -19,17 +20,16 @@ const Welcome = (props) => {
         <h1 className="text-xl md:text-3xl lg:text-4xl font-bold pb-8 text-center">
           Hi! This is Anirudh Chintha
         </h1>
-        <div
-          className={`rounded-md drop-shadow-lg border px-4 py-2 ${
-            initialBtnClicked ? "" : "animate-pulse"
-          } bg-white text-xl font-semibold cursor-pointer hover:animate-none hover:drop-shadow-xl`}
+        <Button
           onClick={onInitialButtonClick}
+          loading={initialBtnClicked ? !showCards : showCards}
+          className="min-h-[42px] w-auto"
         >
           <LikeCode
             text={initialBtnClicked ? "Close everything" : "Click here to know about me"}
             image={initialBtnClicked ? FireEmoji : ThumbsUpEmpji}
           />
-        </div>
+        </Button>
       </div>
     </div>
   );
@@ -38,6 +38,7 @@ const Welcome = (props) => {
 Welcome.propTypes = {
   initialBtnClicked: PropTypes.bool.isRequired,
   onInitialButtonClick: PropTypes.func.isRequired,
+  showCards: PropTypes.bool.isRequired,
 };
 
 export default Welcome;

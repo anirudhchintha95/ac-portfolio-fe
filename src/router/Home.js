@@ -40,6 +40,7 @@ const Home = () => {
           ></div>
           <Welcome
             initialBtnClicked={initialBtnClicked}
+            showCards={showCards}
             onInitialButtonClick={onInitialButtonClick}
           />
           {showCards ? <Resume showCards={showCards} /> : <></>}
