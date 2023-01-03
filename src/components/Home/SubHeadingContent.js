@@ -7,7 +7,7 @@ import { Folder } from "../common";
 import Education from "./Education";
 import AcademicProjects from "./AcademicProjects";
 import WorkExperience from "./WorkExperience";
-import ContactMe from "./ContactMe";
+import Connect from "./Connect";
 
 const ContentMapper = (props) => {
   switch (props.selectedSubHeading) {
@@ -17,8 +17,8 @@ const ContentMapper = (props) => {
       return <AcademicProjects />;
     case subHeadingsMapper.workExperience:
       return <WorkExperience />;
-    case subHeadingsMapper.contactMe:
-      return <ContactMe />;
+    case subHeadingsMapper.connect:
+      return <Connect />;
     default:
       return <></>;
   }

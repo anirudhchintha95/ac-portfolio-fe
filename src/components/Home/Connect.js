@@ -10,7 +10,7 @@ import {
   REACT_APP_EMAILJS_TEMPLATE,
 } from "../../constants.env";
 
-const ContactMe = () => {
+const Connect = () => {
   const [formValues, setFormValues] = useState({
     name: "",
     email: "",
@@ -174,4 +174,4 @@ const ContactMe = () => {
   );
 };
 
-export default ContactMe;
+export default Connect;

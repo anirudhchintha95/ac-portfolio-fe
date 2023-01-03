@@ -4,7 +4,7 @@ import { acLogo } from "../../assets/images";
 
 const Header = () => {
   return (
-    <div className="h-12 flex items-center justify-center">
+    <div className="h-12 flex items-center justify-center p-1">
       <img src={acLogo} className="h-10 w-10 rounded-full" />
     </div>
   );

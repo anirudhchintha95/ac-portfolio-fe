@@ -53,7 +53,7 @@ const Folder = (props) => {
         </div>
       </div>
 
-      <div className="flex-1 px-8 overflow-y-scroll">{children}</div>
+      <div className="flex-1 px-8 overflow-scroll">{children}</div>
     </div>
   );
 };

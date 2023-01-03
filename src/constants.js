@@ -6,7 +6,7 @@ export const subHeadingsMapper = {
   workExperience: "Work Experience",
   skills: "Skills",
   achievements: "Achievements",
-  contactMe: "Contact Me",
+  connect: "Connect",
 };
 
 export const subHeadings = [
@@ -15,7 +15,7 @@ export const subHeadings = [
   subHeadingsMapper.workExperience,
   subHeadingsMapper.skills,
   subHeadingsMapper.achievements,
-  subHeadingsMapper.contactMe,
+  subHeadingsMapper.connect,
 ];
 
 export const EducationData = [
