@@ -9,7 +9,7 @@ const Accordian = (props) => {
 
   return (
     <div
-      className="flex flex-col box-border px-4 border rounded-md shadow-md bg-slate-50 my-4 text-sm md:text-md justify-between cursor-pointer w-full"
+      className="flex flex-col box-border px-4 border rounded-md shadow-md bg-white my-4 text-sm md:text-md justify-between cursor-pointer w-full"
       id={id}
       {...rest}
     >

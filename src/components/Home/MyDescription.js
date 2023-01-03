@@ -13,7 +13,8 @@ const MyDescription = (props) => {
       onMaxMinFolder={onChangeOpenModal}
       onCloseFolder={onCloseFolder}
     >
-      My description
+      I am a full stack developer with more than 5 years of experience pursuing MS in Computer
+      Science at Stevens Institute of Technology.
     </Folder>
   );
 };
